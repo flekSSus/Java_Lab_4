@@ -2,6 +2,10 @@ class Main
 {
     public static void main(String [] args)
     {
-        List.Print();        
+
+        String filePath="input.txt";
+        FReader = new FReader(filePath);
+        
+
     }
 }
