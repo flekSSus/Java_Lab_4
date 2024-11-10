@@ -37,5 +37,35 @@ class FReader
             System.out.println(e);    
         }        
     }
+    public void ReadConsole(List list)
+    {
+        try(BufferedReader bRead=new BufferedReader(new InputStreamReader(System.in)))
+        {
+            Ship shp;
+            Integer size=Integer.parseInt(bRead.readLine());
+            String tmpStr;
+            String[] fields; 
+            for(int i=0;i<size.intValue();++i)
+            {
+                tmpStr=bRead.readLine();      
+                fields= tmpStr.split(" ");
+                shp=new Ship(fields[0],fields[1],fields[2],Double.parseDouble(fields[3]),Integer.parseInt(fields[4]));
+                list.add(shp);
+            }
+        }
+        catch(IOException e)
+        {
+            System.out.println(e);
+        }
+
+
+    }
 
 }
+
+
+
+
+
+
+
