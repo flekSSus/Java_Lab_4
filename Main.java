@@ -9,7 +9,8 @@ class Main
         List ships=new List();
 
         Scanner scanner = new Scanner(System.in);
-        int choice;
+        int choice=1;
+
 
         do {
             System.out.println("\nMenu:");
@@ -21,6 +22,12 @@ class Main
             System.out.println("6. Remove element");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
+            
+            if (!scanner.hasNextInt()) {
+                System.out.println("Please enter a valid number.");
+                scanner.nextLine(); 
+                continue; 
+            }
 
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -42,8 +49,8 @@ class Main
                     System.out.println("Please, enter: ");
                     fr.ReadConsole(ships);
                     System.out.println("Success!\n");
-                }
                     break;
+                }
                 case 3:
                 {
                     String fileName;
@@ -73,6 +80,7 @@ class Main
                     System.out.println("Invalid choice. Please try again.");
             }
         } while (choice != 0);
+
 
         scanner.close();
 

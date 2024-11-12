@@ -3,6 +3,7 @@ import java.io.*;
 class FReader
 {
 
+    Validator valid1=new Validator();
     private String _filePath;
 
     FReader()
@@ -27,21 +28,36 @@ class FReader
             {
                 tmpStr=bReadF.readLine();      
                 fields= tmpStr.split(" ");
+                if(!valid1.IS_MORE_ZERO(Integer.parseInt(fields[4])))
+                {
+                    throw valid1;
+                }
+                if(!valid1.IS_MORE_ZERO(Integer.parseInt(fields[3])))
+                {
+                    throw valid1;
+                }
+                
                 shp=new Ship(fields[0],fields[1],fields[2],Double.parseDouble(fields[3]),Integer.parseInt(fields[4]));
                 list.add(shp);
             }
         }
-
         catch(IOException e)
         {
             System.out.println(e);    
         }        
+        catch(Validator v)
+        {
+            System.out.println("Incorrect input");    
+            return;
+        }
     }
     public void ReadConsole(List list)
     {
         try(BufferedReader bRead=new BufferedReader(new InputStreamReader(System.in)))
         {
             Ship shp;
+            
+            System.out.println("Enter the number\n");
             Integer size=Integer.parseInt(bRead.readLine());
             String tmpStr;
             String[] fields; 
@@ -49,6 +65,14 @@ class FReader
             {
                 tmpStr=bRead.readLine();      
                 fields= tmpStr.split(" ");
+                if(!valid1.IS_MORE_ZERO(Integer.parseInt(fields[4])))
+                {
+                    throw valid1;
+                }
+                if(!valid1.IS_MORE_ZERO(Integer.parseInt(fields[3])))
+                {
+                    throw valid1;
+                }
                 shp=new Ship(fields[0],fields[1],fields[2],Double.parseDouble(fields[3]),Integer.parseInt(fields[4]));
                 list.add(shp);
             }
@@ -57,6 +81,11 @@ class FReader
         {
             System.out.println(e);
         }
+        catch(Validator e)
+        {
+            System.out.println("Incorrect input");
+        }
+
 
 
     }
