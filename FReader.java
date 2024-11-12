@@ -57,10 +57,11 @@ class FReader
         {
             Ship shp;
             
-            System.out.println("Enter the number\n");
+            System.out.println("Enter the number");
             Integer size=Integer.parseInt(bRead.readLine());
             String tmpStr;
             String[] fields; 
+            System.out.println("Enter characteristics(5): ");
             for(int i=0;i<size.intValue();++i)
             {
                 tmpStr=bRead.readLine();      

@@ -31,6 +31,17 @@ class List extends AbstractList<Vehicle>
     {
         return arr_vehicle.contains(obj1);  
     }
+    boolean containsID(String id)
+    {
+        for(Vehicle el:arr_vehicle) 
+        {
+            if(el.Get_Id().equals(id))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     @Override
     public Vehicle get(int i)
     {
@@ -41,5 +52,23 @@ class List extends AbstractList<Vehicle>
     {
         return arr_vehicle.remove(i);  
     }
+    @Override
+    public int indexOf(Object obj1)
+    {
+        return arr_vehicle.indexOf(obj1);
+    }
    
+    public int indexOf_ID(String id)
+    {
+        for(Vehicle el:arr_vehicle)
+        {
+            if(el.Get_Id().equals(id)) 
+                return arr_vehicle.indexOf(el);
+        }
+        return -1;
+    }
+
+
+
+
 }

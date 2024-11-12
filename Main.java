@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 class Main
 {
-    public static void main(String [] args)
+    public static void main(String [] args) throws IOException
     {
 
         List ships=new List();
@@ -18,8 +18,7 @@ class Main
             System.out.println("2. Read from console");
             System.out.println("3. Write in file");
             System.out.println("4. Write in console");
-            System.out.println("5. Add element");
-            System.out.println("6. Remove element");
+            System.out.println("5. Remove element");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             
@@ -70,6 +69,21 @@ class Main
                 }
                     break;
                 case 5:
+                {
+                    BufferedReader br2= new BufferedReader(new InputStreamReader(System.in));
+                    String id=" ";
+
+                    System.out.print("Enter id of element: ");
+                    id=br2.readLine();
+                    if(ships.containsID(id))
+                    {
+                        ships.remove(ships.indexOf_ID(id));
+                    }
+                    else
+                    {
+                        System.out.println("No such element");
+                    }
+                }
                     break;
                 case 6:
                     break;
