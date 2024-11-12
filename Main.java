@@ -1,3 +1,5 @@
+import java.util.Collections;
+import java.util.Iterator;
 import java.io.*;
 import java.util.Scanner;
 
@@ -19,6 +21,8 @@ class Main
             System.out.println("3. Write in file");
             System.out.println("4. Write in console");
             System.out.println("5. Remove element");
+            System.out.println("6. Output using iterators");
+            System.out.println("7. Sort by name");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             
@@ -86,6 +90,21 @@ class Main
                 }
                     break;
                 case 6:
+                {
+                    Iterator<Vehicle> begin= ships.iterator();
+
+                    System.out.println("Ships: \n");
+                    while(begin.hasNext())
+                    {
+                        System.out.println(begin.next());
+                    }
+                }
+                case 7:
+                {
+                    Collections.sort(ships,(o1,o2)->o1.Get_Name().compareTo(o2.Get_Name()));
+                    System.out.println("Success!");
+                }
+
                     break;
                 case 0:
                     System.out.println("Exiting...");
@@ -98,14 +117,5 @@ class Main
 
         scanner.close();
 
-//        try(FileWriter fw=new FileWriter("output.txt"))
-//        {
-//        OutputStreamWriter ostr=new OutputStreamWriter(System.out);
-//             ships.get(0).GetInfo(ostr);
-//        }
-//        catch(Exception e)
-//        {
-//            System.out.println(e);
-//        }
     }
 }

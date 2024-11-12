@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.AbstractList;
 
@@ -26,6 +27,11 @@ class List extends AbstractList<Vehicle>
     public void clear()
     {
         arr_vehicle.clear();  
+    }
+    @Override
+    public Iterator<Vehicle> iterator()
+    {
+        return arr_vehicle.iterator();
     }
     boolean contains(Vehicle obj1)
     {
