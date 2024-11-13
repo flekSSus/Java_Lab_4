@@ -1,9 +1,9 @@
 import java.io.*;
+import java.lang.NumberFormatException;
 
 class FReader
 {
 
-    Validator valid1=new Validator();
     private String _filePath;
 
     FReader()
@@ -28,16 +28,29 @@ class FReader
             {
                 tmpStr=bReadF.readLine();      
                 fields= tmpStr.split(" ");
-                if(!valid1.IS_MORE_ZERO(Integer.parseInt(fields[4])))
+                Integer crew_size;
+                try
                 {
-                    throw valid1;
+                    crew_size=Integer.parseInt(fields[4]);
                 }
-                if(!valid1.IS_MORE_ZERO(Integer.parseInt(fields[3])))
+                catch(NumberFormatException e)
                 {
-                    throw valid1;
+                    System.out.println("Incorrect input");
+                    crew_size=0;
                 }
-                
-                shp=new Ship(fields[0],fields[1],fields[2],Double.parseDouble(fields[3]),Integer.parseInt(fields[4]));
+
+                Double max_speed;
+                try
+                {
+                    max_speed=Double.parseDouble(fields[3]);
+                }
+                catch(NumberFormatException e)
+                {
+                    System.out.println("Incorrect input");
+                    max_speed=Double.valueOf(0);
+                }
+
+                shp=new Ship(fields[0],fields[1],fields[2],max_speed,crew_size);
                 list.add(shp);
             }
         }
@@ -45,11 +58,6 @@ class FReader
         {
             System.out.println(e);    
         }        
-        catch(Validator v)
-        {
-            System.out.println("Incorrect input");    
-            return;
-        }
     }
     public void ReadConsole(List list)
     {
@@ -66,15 +74,29 @@ class FReader
             {
                 tmpStr=bRead.readLine();      
                 fields= tmpStr.split(" ");
-                if(!valid1.IS_MORE_ZERO(Integer.parseInt(fields[4])))
+                Integer crew_size;
+                try
                 {
-                    throw valid1;
+                    crew_size=Integer.parseInt(fields[4]);
                 }
-                if(!valid1.IS_MORE_ZERO(Integer.parseInt(fields[3])))
+                catch(NumberFormatException e)
                 {
-                    throw valid1;
+                    System.out.println("Incorrect input");
+                    crew_size=0;
                 }
-                shp=new Ship(fields[0],fields[1],fields[2],Double.parseDouble(fields[3]),Integer.parseInt(fields[4]));
+
+                Double max_speed;
+                try
+                {
+                    max_speed=Double.parseDouble(fields[3]);
+                }
+                catch(NumberFormatException e)
+                {
+                    System.out.println("Incorrect input");
+                    max_speed=Double.valueOf(0);
+                }
+
+               shp=new Ship(fields[0],fields[1],fields[2],Double.parseDouble(fields[3]),Integer.parseInt(fields[4]));
                 list.add(shp);
             }
         }
@@ -82,13 +104,7 @@ class FReader
         {
             System.out.println(e);
         }
-        catch(Validator e)
-        {
-            System.out.println("Incorrect input");
-        }
-
-
-
+ 
     }
 
 }

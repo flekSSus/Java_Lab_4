@@ -23,6 +23,7 @@ class Main
             System.out.println("5. Remove element");
             System.out.println("6. Output using iterators");
             System.out.println("7. Sort by name");
+            System.out.println("8. Read from XML file");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             
@@ -104,8 +105,15 @@ class Main
                     Collections.sort(ships,(o1,o2)->o1.Get_Name().compareTo(o2.Get_Name()));
                     System.out.println("Success!");
                 }
-
                     break;
+                case 8:
+                {
+                    XML_Reader xml_r=new XML_Reader("file.xml");
+                    xml_r.ReadXML();
+                    System.out.println("Success!");
+                }
+                    break;
+
                 case 0:
                     System.out.println("Exiting...");
                     break;
