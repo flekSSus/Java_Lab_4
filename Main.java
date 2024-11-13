@@ -34,6 +34,7 @@ class Main
             }
 
             choice = scanner.nextInt();
+            System.out.println(choice);
             scanner.nextLine();
 
             switch (choice) {
@@ -51,10 +52,10 @@ class Main
                 {
                     FReader fr= new FReader();   
                     System.out.println("Please, enter: ");
-                    fr.ReadConsole(ships);
+                    fr.ReadConsole(ships,scanner);
                     System.out.println("Success!\n");
-                    break;
                 }
+                    break;
                 case 3:
                 {
                     String fileName;

@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.io.*;
 import java.lang.NumberFormatException;
 
@@ -59,20 +60,20 @@ class FReader
             System.out.println(e);    
         }        
     }
-    public void ReadConsole(List list)
+    public void ReadConsole(List list,Scanner scanner)
     {
-        try(BufferedReader bRead=new BufferedReader(new InputStreamReader(System.in)))
+        try
         {
             Ship shp;
             
             System.out.println("Enter the number");
-            Integer size=Integer.parseInt(bRead.readLine());
+            Integer size=Integer.parseInt(scanner.nextLine());
             String tmpStr;
             String[] fields; 
             System.out.println("Enter characteristics(5): ");
             for(int i=0;i<size.intValue();++i)
             {
-                tmpStr=bRead.readLine();      
+                tmpStr=scanner.nextLine();      
                 fields= tmpStr.split(" ");
                 Integer crew_size;
                 try
@@ -96,11 +97,12 @@ class FReader
                     max_speed=Double.valueOf(0);
                 }
 
-               shp=new Ship(fields[0],fields[1],fields[2],Double.parseDouble(fields[3]),Integer.parseInt(fields[4]));
+                shp=new Ship(fields[0],fields[1],fields[2],Double.parseDouble(fields[3]),Integer.parseInt(fields[4]));
                 list.add(shp);
             }
+
         }
-        catch(IOException e)
+        catch(Exception e)
         {
             System.out.println(e);
         }
