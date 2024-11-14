@@ -65,10 +65,8 @@ class XML_Reader
         {
             System.out.println(e);
         }
-
-
-      
-
     }
+
+
 
 }

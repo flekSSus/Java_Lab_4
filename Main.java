@@ -24,6 +24,7 @@ class Main
             System.out.println("6. Output using iterators");
             System.out.println("7. Sort by name");
             System.out.println("8. Read from XML file");
+            System.out.println("9. Write from XML file");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             
@@ -119,7 +120,20 @@ class Main
                     System.out.println("Success!");
                 }
                     break;
+                case 9:
+                {
+                    String filePath;
 
+                    System.out.println("\nEnter xml-file name/path: ");
+
+                    filePath=scanner.nextLine();
+                    XML_Writer xml_w=new XML_Writer(filePath);
+
+                    xml_w.WriteXML(ships);
+
+                    System.out.println("Success!");
+
+                }
                 case 0:
                     System.out.println("Exiting...");
                     break;
