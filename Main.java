@@ -34,7 +34,6 @@ class Main
             }
 
             choice = scanner.nextInt();
-            System.out.println(choice);
             scanner.nextLine();
 
             switch (choice) {
