@@ -40,7 +40,7 @@ class Main
                 case 1:
                 {
                     String fileName;
-                    System.out.print("Enter file name: ");
+                    System.out.print("\nEnter file name: ");
                     fileName=scanner.nextLine();
                     FReader fr=new FReader(fileName); 
                     fr.ReadFile(ships);
@@ -50,7 +50,7 @@ class Main
                 case 2:
                 {
                     FReader fr= new FReader();   
-                    System.out.println("Please, enter: ");
+                    System.out.println("\nPlease, enter: ");
                     fr.ReadConsole(ships,scanner);
                     System.out.println("Success!\n");
                 }
@@ -58,7 +58,7 @@ class Main
                 case 3:
                 {
                     String fileName;
-                    System.out.print("Enter file name: ");
+                    System.out.print("\nEnter file name: ");
                     fileName=scanner.nextLine();
                     FWriter fw= new FWriter(fileName); 
                     fw.WriteFile(ships);
@@ -68,7 +68,7 @@ class Main
                 case 4:
                 {
                     FWriter fw= new FWriter();   
-                    System.out.println("Ships: ");
+                    System.out.println("\nShips: ");
                     fw.WriteConsole(ships);
                     System.out.println("Success!\n");
                 }
@@ -78,7 +78,7 @@ class Main
                     BufferedReader br2= new BufferedReader(new InputStreamReader(System.in));
                     String id=" ";
 
-                    System.out.print("Enter id of element: ");
+                    System.out.print("\nEnter id of element: ");
                     id=br2.readLine();
                     if(ships.containsID(id))
                     {
@@ -94,7 +94,7 @@ class Main
                 {
                     Iterator<Vehicle> begin= ships.iterator();
 
-                    System.out.println("Ships: \n");
+                    System.out.println("\nShips: \n");
                     while(begin.hasNext())
                     {
                         System.out.println(begin.next());
@@ -108,8 +108,14 @@ class Main
                     break;
                 case 8:
                 {
-                    XML_Reader xml_r=new XML_Reader("file.xml");
-                    xml_r.ReadXML();
+                    String filePath;
+
+                    System.out.print("\nEnter xml-file name/path: ");
+
+                    filePath=scanner.nextLine();
+                    XML_Reader xml_r=new XML_Reader(filePath);
+                    xml_r.ReadXML(ships);
+
                     System.out.println("Success!");
                 }
                     break;
