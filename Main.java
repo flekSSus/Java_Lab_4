@@ -3,6 +3,8 @@ import java.util.Iterator;
 import javax.crypto.SecretKey;
 import java.io.*;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 class Main
 {
@@ -32,6 +34,7 @@ class Main
             System.out.println("12. Write in JSON file");
             System.out.println("13. Encrypt file");
             System.out.println("14. Decrypt file");
+            System.out.println("15. Archivate in JAR");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             
@@ -213,6 +216,31 @@ class Main
                         System.out.println(e);
                     }
                 }
+                    break;
+                 case 15:
+                 {
+                    String mainName;
+                    ArrayList<String> classes;
+                    String classStr;
+                    String jarName;
+
+                    System.out.println("Enter JAR-file name");
+                    jarName=scanner.nextLine();
+                    System.out.println("Enter Main class name");
+                    mainName=scanner.nextLine();
+                    System.out.println("Enter all classes names(Main.class List.class) in one line");
+                    classStr=scanner.nextLine();
+                    classes=new ArrayList<String>(Arrays.asList(classStr.split(" ")));
+                    
+                    var jc=new JarCreator();
+                    jc.Set_MainClass(mainName);
+                    jc.Set_Classes(classes);
+                    jc.Set_JarName(jarName);
+                    jc.CreateJar();
+                    
+                    System.out.println("Success");
+                    
+                 }
                     break;
                  case 0:
                     System.out.println("Exiting...");
