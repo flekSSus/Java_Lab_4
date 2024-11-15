@@ -21,11 +21,13 @@ class Main
             System.out.println("3. Write in file");
             System.out.println("4. Write in console");
             System.out.println("5. Remove element");
-            System.out.println("6. Output using iterators");
-            System.out.println("7. Sort by name");
-            System.out.println("8. Read from XML file");
-            System.out.println("9. Write from XML file");
-            System.out.println("10. Read from JSON file");
+            System.out.println("6. Clear");
+            System.out.println("7. Output using iterators");
+            System.out.println("8. Sort by name");
+            System.out.println("9. Read from XML file");
+            System.out.println("10. Write in XML file");
+            System.out.println("11. Read from JSON file");
+            System.out.println("12. Write in JSON file");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             
@@ -94,6 +96,12 @@ class Main
                     break;
                 case 6:
                 {
+                    ships.clear();
+                    System.out.println("Success!\n");
+                }
+                    break;
+                case 7:
+                {
                     Iterator<Vehicle> begin= ships.iterator();
 
                     System.out.println("\nShips: \n");
@@ -102,13 +110,13 @@ class Main
                         System.out.println(begin.next());
                     }
                 }
-                case 7:
+                case 8:
                 {
                     Collections.sort(ships,(o1,o2)->o1.Get_Name().compareTo(o2.Get_Name()));
                     System.out.println("Success!");
                 }
                     break;
-                case 8:
+                case 9:
                 {
                     String filePath;
 
@@ -121,7 +129,7 @@ class Main
                     System.out.println("Success!");
                 }
                     break;
-                case 9:
+                case 10:
                 {
                     String filePath;
 
@@ -135,7 +143,7 @@ class Main
                     System.out.println("Success!");
 
                 }
-                case 10:
+                case 11:
                 {
                     String filePath;
 
@@ -147,6 +155,20 @@ class Main
                     json_r.ReadJSON(ships);
 
                     System.out.println("Success!");
+                }
+                case 12:
+                {
+                    String filePath;
+
+                    System.out.println("\nEnter json-file name/path");
+
+                    filePath=scanner.nextLine();
+                    JSON_Writer json_w=new JSON_Writer(filePath);
+
+                    json_w.WriteJSON(ships);
+
+                    System.out.println("Success!");
+
                 }
                 case 0:
                     System.out.println("Exiting...");
