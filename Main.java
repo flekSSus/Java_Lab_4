@@ -25,6 +25,7 @@ class Main
             System.out.println("7. Sort by name");
             System.out.println("8. Read from XML file");
             System.out.println("9. Write from XML file");
+            System.out.println("10. Read from JSON file");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             
@@ -133,6 +134,19 @@ class Main
 
                     System.out.println("Success!");
 
+                }
+                case 10:
+                {
+                    String filePath;
+
+                    System.out.println("\nEnter json-file name/path");
+
+                    filePath=scanner.nextLine();
+                    JSON_Reader json_r=new JSON_Reader(filePath);
+
+                    json_r.ReadJSON(ships);
+
+                    System.out.println("Success!");
                 }
                 case 0:
                     System.out.println("Exiting...");

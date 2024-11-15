@@ -1,13 +1,28 @@
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.*;
 
 class Ship extends Vehicle
 {
+    @JsonProperty("id")
     protected String id_str;
+    @JsonProperty("name")
     protected String name_str;
+    @JsonProperty("type")
     protected String type_str;
+    @JsonProperty("max_speed")
     protected double max_speed_d;
+    @JsonProperty("crew_size")
     protected int crew_size_i;
     
+    Ship()
+    {
+        id_str="none";
+        name_str="none";
+        type_str="type_str";
+        max_speed_d=0;
+        crew_size_i=0;
+    }
+
     Ship(String id, String name, String type, double max_speed, int crew)
     {
         id_str=id;       
