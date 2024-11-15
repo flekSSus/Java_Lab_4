@@ -1,11 +1,12 @@
 import java.util.Collections;
 import java.util.Iterator;
+import javax.crypto.SecretKey;
 import java.io.*;
 import java.util.Scanner;
 
 class Main
 {
-    public static void main(String [] args) throws IOException
+    public static void main(String [] args) throws Exception
     {
 
         List ships=new List();
@@ -13,6 +14,7 @@ class Main
         Scanner scanner = new Scanner(System.in);
         int choice=1;
 
+        SecretKey skey=Encryptor.GenerateKey();
 
         do {
             System.out.println("\nMenu:");
@@ -29,6 +31,7 @@ class Main
             System.out.println("11. Read from JSON file");
             System.out.println("12. Write in JSON file");
             System.out.println("13. Encrypt file");
+            System.out.println("14. Decrypt file");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             
@@ -176,12 +179,12 @@ class Main
                     String filePath;
                     Encryptor encr=new Encryptor();
 
-                    System.out.println("\nEnter json-file name/path");
+                    System.out.println("\nEnter file to encrypt");
 
                     filePath=scanner.nextLine();
                     try
                     {
-                        encr.Encrypt(filePath,encr.GenerateKey());                    
+                        encr.Encrypt(filePath,skey);                    
 
                         System.out.println("Success!");
                     }
@@ -191,7 +194,27 @@ class Main
                     }
                 }
                     break;
-                case 0:
+                case 14:
+                {
+                    String filePath;
+                    Decryptor decr=new Decryptor();
+
+                    System.out.println("\nEnter file to decrypt(*.enc)");
+
+                    filePath=scanner.nextLine();
+                    try
+                    {
+                        decr.Decrypt(filePath,skey);                    
+
+                        System.out.println("Success!");
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println(e);
+                    }
+                }
+                    break;
+                 case 0:
                     System.out.println("Exiting...");
                     break;
                 default:

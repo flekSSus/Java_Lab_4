@@ -9,6 +9,7 @@ class Encryptor
 {
     
     private static String algorithmName="AES";
+    private static final String TRANSFORMATION = "AES/ECB/PKCS5Padding";
     private static int keySize=128;
 
     public static SecretKey GenerateKey()throws Exception
@@ -27,14 +28,13 @@ class Encryptor
 
         try (FileInputStream fis=new FileInputStream(inFile);FileOutputStream fos=new FileOutputStream(encFile))
         {
-            Cipher c=Cipher.getInstance(algorithmName);
+            Cipher c=Cipher.getInstance(TRANSFORMATION);
             c.init(Cipher.ENCRYPT_MODE, skey);
 
         
             byte[] inBytes=new byte[(int) inFile.length()];
-            byte[] outBytes = c.doFinal(inBytes);
-
             fis.read(inBytes);
+            byte[] outBytes = c.doFinal(inBytes);
             fos.write(outBytes);
         }
         catch(Exception e)
