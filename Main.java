@@ -28,6 +28,7 @@ class Main
             System.out.println("10. Write in XML file");
             System.out.println("11. Read from JSON file");
             System.out.println("12. Write in JSON file");
+            System.out.println("13. Encrypt file");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             
@@ -170,6 +171,26 @@ class Main
                     System.out.println("Success!");
 
                 }
+                case 13:
+                {
+                    String filePath;
+                    Encryptor encr=new Encryptor();
+
+                    System.out.println("\nEnter json-file name/path");
+
+                    filePath=scanner.nextLine();
+                    try
+                    {
+                        encr.Encrypt(filePath,encr.GenerateKey());                    
+
+                        System.out.println("Success!");
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println(e);
+                    }
+                }
+                    break;
                 case 0:
                     System.out.println("Exiting...");
                     break;
