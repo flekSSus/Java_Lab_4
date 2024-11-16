@@ -35,6 +35,7 @@ class Main
             System.out.println("13. Encrypt file");
             System.out.println("14. Decrypt file");
             System.out.println("15. Archivate in JAR");
+            System.out.println("16. Archivate in ZIP");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             
@@ -239,6 +240,26 @@ class Main
                     jc.CreateJar();
                     
                     System.out.println("Success");
+                    
+                 }
+                 case 16:
+                 {
+                    String zipName;
+                    ArrayList<String>classes;
+                    String classStr;
+
+                    System.out.println("Enter ZIP-file name");
+                    zipName=scanner.nextLine();
+                    System.out.println("Enter all classes names(Main.class List.class) in one line");
+                    classStr=scanner.nextLine();
+                    classes=new ArrayList<String>(Arrays.asList(classStr.split(" ")));
+                    
+                    var zc=new ZipCreator();
+                    zc.Set_ZipName(zipName);
+                    zc.Set_Classes(classes);
+                    zc.CreateZip();
+
+                    System.out.println("Success!");
                     
                  }
                     break;
