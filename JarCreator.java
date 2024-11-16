@@ -43,7 +43,8 @@ class JarCreator
     private Manifest CreateManifest()
     {
         Manifest manif=new Manifest(); 
-        manif.getMainAttributes().put(Attributes.Name.MAIN_CLASS,_MAIN_CLASS);
+        manif.getMainAttributes().put(Attributes.Name.MAIN_CLASS,_MAIN_CLASS.trim());
+        manif.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION,"1.0");
         return manif;
     }
 
